@@ -1,0 +1,68 @@
+body {
+  div.main {
+    div.sidebar {
+      padding: 1em .5em;
+      width: 16.5em !important;
+      font-weight: 400;
+      text-transform: lowercase;
+
+      a {
+        color: black;
+
+        &:hover {
+          color: $gray;
+        }
+      }
+
+      .logo {
+        a {
+          img {
+            max-width: 75%;
+          }
+        }
+
+        padding-bottom: 1em;
+        text-align: center;
+      }
+
+      .sub-nav {
+        margin-left: 1em;
+
+        a {
+          color: $gray-600;
+
+          &:hover {
+            color: $gray-500;
+          }
+        }
+      }
+
+      .sub-nav-toggle:after {
+        font-family: 'Font Awesome 5 Free';
+        float: right;
+        font-weight: 900;
+      }
+
+      .sub-nav-toggle[aria-expanded="true"] {
+        color: $primary;
+
+        &:after {
+          content: "";
+        }
+      }
+
+      .sub-nav-toggle[aria-expanded="false"]:after {
+        content: "";
+      }
+
+      hr {
+        margin: 4em 4em 2em 4em;
+      }
+
+      p {
+        text-align: center;
+        color: $gray-500;
+      }
+    }
+  }
+}

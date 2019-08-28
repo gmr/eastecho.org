@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  div.main {
+    align-items: stretch;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    div.content {
+      display: block;
+      flex: 1 1 auto;
+      margin-left: auto;
+      padding: 0;
+      @media (max-width: 768px) {
+        margin-top: 4em;
+      }
+    }
+  }
+}

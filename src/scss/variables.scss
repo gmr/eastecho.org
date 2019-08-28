@@ -23,7 +23,7 @@ $h4-font-size:            $font-size-base * 1.25 !default;
 $h5-font-size:            $font-size-base * 1.12 !default;
 $h6-font-size:            $font-size-base !default;
 
-$breadcrumb-divider:      quote(">");
+$transition-collapse:     height 0s ease !default;
 
 $wizard-form-min-height:  31em;
 $wizard-form-width:       100%;

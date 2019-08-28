@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/site.css">
+    <title>{% block title %}the east echo{% endblock %}</title>
+  </head>
+  <body>
+    {% include "top-nav.html" %}
+    <div class="main">
+      <div class="d-none d-md-block sidebar">{% include "side-nav.html" %}</div>
+      <div class="content">Content</div>
+    </div>
+    <script src="/static/site.js"></script>
+  </body>
+</html>

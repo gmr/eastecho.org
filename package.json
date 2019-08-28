@@ -37,7 +37,7 @@
     "dev-sass": "node-sass --importer node_modules/node-sass-import src/scss/site.scss > eastecho/site/static/site.css",
     "sass": "node-sass --importer node_modules/node-sass-import --output-style=compressed src/scss/site.scss > eastecho/site/static/site.css",
     "watch": "webpack --progress -d --config webpack.config.js --watch",
-    "watch-sass": "node-sass --importer node_modules/node-sass-import --watch -r src/scss/site.scss > eastecho/site/static/site.css"
+    "watch-sass": "node-sass --importer node_modules/node-sass-import --watch src/scss/site.scss eastecho/site/static/site.css"
   },
   "dependencies": {
     "@babel/core": "^7.5.5"
