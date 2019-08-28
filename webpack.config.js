@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: ['babel-polyfill', path.resolve(__dirname, './src/js/index.js')],
   output: {
-    path: path.resolve(__dirname, './eastecho/static/'),
+    path: path.resolve(__dirname, './eastecho/site/static/'),
     filename: 'site.js',
   },
   performance: {hints: false},
@@ -35,14 +35,14 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
-        to: path.resolve(__dirname, './eastecho/static/fonts/'),
+        to: path.resolve(__dirname, './eastecho/site/static/fonts/'),
         flatten: true
-      },
+      }/*,
       {
         from: 'node_modules/redoc/bundles/redoc.standalone.js',
-        to: path.resolve(__dirname, './eastecho/static/'),
+        to: path.resolve(__dirname, './eastecho/api/static/'),
         flatten: true
-      }
+      }*/
     ], {})
   ],
   externals: {

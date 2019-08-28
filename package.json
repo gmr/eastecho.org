@@ -34,10 +34,10 @@
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",
     "dev-build": "webpack --progress -d --config webpack.config.js",
-    "dev-sass": "node-sass --importer node_modules/node-sass-import src/scss/site.scss > eastecho/static/site.css",
-    "sass": "node-sass --importer node_modules/node-sass-import --output-style=compressed src/scss/site.scss > eastecho/static/site.css",
+    "dev-sass": "node-sass --importer node_modules/node-sass-import src/scss/site.scss > eastecho/site/static/site.css",
+    "sass": "node-sass --importer node_modules/node-sass-import --output-style=compressed src/scss/site.scss > eastecho/site/static/site.css",
     "watch": "webpack --progress -d --config webpack.config.js --watch",
-    "watch-sass": "node-sass --importer node_modules/node-sass-import --watch -r src/scss/site.scss > eastecho/static/site.css"
+    "watch-sass": "node-sass --importer node_modules/node-sass-import --watch -r src/scss/site.scss > eastecho/site/static/site.css"
   },
   "dependencies": {
     "@babel/core": "^7.5.5"
