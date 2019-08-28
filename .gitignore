@@ -105,3 +105,10 @@ venv.bak/
 
 .DS_Store
 .idea
+
+node_modules
+
+eastecho/static/site.css
+eastecho/static/*.js
+eastecho/static/fonts/
+eastecho/site/migrations/0*.py

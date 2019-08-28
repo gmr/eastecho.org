@@ -1,0 +1,45 @@
+{
+  "name": "eastecho.org",
+  "author": "Gavin M. Roy",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/east-echo/eastecho.org.git"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^4.3.1",
+    "copy-webpack-plugin": "^5.0.4",
+    "core-js": "^3.2.1",
+    "eslint": "^6.2.2",
+    "jquery": "^3.4.1",
+    "mobx": "^5.13.0",
+    "node-sass": "^4.12.0",
+    "node-sass-import": "^2.0.1",
+    "popper.js": "^1.15.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "redoc": "^2.0.0-rc.14",
+    "styled-components": "^4.3.2",
+    "tether": "^1.4.7",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  },
+  "scripts": {
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "dev-sass": "node-sass --importer node_modules/node-sass-import src/scss/site.scss > eastecho/static/site.css",
+    "sass": "node-sass --importer node_modules/node-sass-import --output-style=compressed src/scss/site.scss > eastecho/static/site.css",
+    "watch": "webpack --progress -d --config webpack.config.js --watch",
+    "watch-sass": "node-sass --importer node_modules/node-sass-import --watch -r src/scss/site.scss > eastecho/static/site.css"
+  },
+  "dependencies": {
+    "@babel/core": "^7.5.5"
+  }
+}
