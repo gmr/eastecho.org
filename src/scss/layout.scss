@@ -60,6 +60,13 @@ body {
     text-align: center;
     padding: .5em 1em;
     z-index: 100;
+    a {
+      color: #ddd;
+      float: left;
+      &:hover {
+        color: #ccc;
+      }
+    }
     img {
       float: right;
       height: 1.5em;
