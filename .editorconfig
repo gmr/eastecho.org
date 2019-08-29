@@ -4,7 +4,7 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-[*.{js,json,html,sass}]
+[*.{cfg,js,json,html,sass}]
 indent_style = space
 indent_size = 2
 

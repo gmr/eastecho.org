@@ -7,11 +7,23 @@
     <title>{% block title %}the east echo{% endblock %}</title>
   </head>
   <body>
-    {% include "top-nav.html" %}
-    <div class="main">
-      <div class="d-none d-md-block sidebar">{% include "side-nav.html" %}</div>
-      <div class="content">Content</div>
+    <div id="app">
+      {% include "top-nav.html" %}
+      <div class="main">
+        <div class="d-none d-md-block sidebar">{% include "side-nav.html" %}</div>
+        <div class="content">
+          {% block content %}
+            <div class="alert alert-danger" role="alert">
+              &ldquo;content&rdquo; template block not implemented
+            </div>
+          {% endblock %}
+        </div>
+      </div>
     </div>
+    <footer>
+      for students by students.
+      <img src="/static/east.png" alt="">
+    </footer>
     <script src="/static/site.js"></script>
   </body>
 </html>

@@ -2,20 +2,67 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  div.main {
+
+  div#app {
     align-items: stretch;
     display: flex;
     flex: 1 0 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    div.content {
-      display: block;
-      flex: 1 1 auto;
-      margin-left: auto;
-      padding: 0;
-      @media (max-width: 768px) {
-        margin-top: 4em;
+    flex-direction: column;
+    margin-bottom: -2.5em !important;
+    min-height: 100vh;
+
+    div.main {
+      align-items: stretch;
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-bottom: -2.5em !important;
+      width: 100%;
+
+      div.content {
+        display: block;
+        flex: 1 1 auto;
+        margin-left: auto;
+        padding: 0;
+        width: 100%;
+
+        .club-header {
+          background-color: rgba(42, 169, 235, 0.58);
+          background-image: url('/static/default.jpeg');
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-blend-mode: soft-light;
+          margin-bottom: 1em;
+          height: 275px;
+          width: 100%;
+        }
+        .page-content {
+          padding: .5em 1em;
+          h1 {
+            border-bottom: 1px solid #eee;
+            margin-bottom: .5em;
+            padding-bottom: .25em;
+          }
+        }
       }
+    }
+    z-index: 50;
+  }
+
+  footer {
+    align-content: center;
+    color: #aaa;
+    border-top: 1px solid #ccc;
+    flex: 0 0 auto;
+    height: 2.5em;
+    text-align: center;
+    padding: .5em 1em;
+    z-index: 100;
+    img {
+      float: right;
+      height: 1.5em;
     }
   }
 }
