@@ -8,7 +8,7 @@ body {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    margin-bottom: -2.5em !important;
+    margin-bottom: 5em !important;
     min-height: 100vh;
 
     div.main {
@@ -55,6 +55,21 @@ body {
             margin-bottom: .5em;
             padding-bottom: .25em;
           }
+
+          .instagram {
+            border: 1px solid #eee;
+            padding: .25em;
+            margin: .5em;
+            float: left;
+            > .photo {
+              margin: .5em;
+              height: 320px;
+              width: 320px;
+              overflow: hidden;
+              background-position: center;
+              background-size: cover;
+            }
+          }
         }
 
         .content {
@@ -87,7 +102,6 @@ body {
     color: #aaa;
     background: #fff;
     border-top: 1px solid #ccc;
-    flex: 0 0 auto;
     height: 2.5em;
     text-align: center;
     padding: .5em 1em;

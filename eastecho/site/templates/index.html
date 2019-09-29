@@ -1,2 +1,12 @@
 {% extends "base.html" %}
 {% block title %}the east echo &ndash; Home{% endblock %}
+{% block content %}
+<div class="page-content">
+  {% for photo in instagram %}
+    <div class="instagram rounded">
+      <div style="background-image: url('{{ photo }}')" class="photo"></div>
+    </div>
+  {% endfor %}
+  <div class="clearfix"></div>
+</div>
+{% endblock %}

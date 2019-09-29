@@ -4,7 +4,6 @@ Django settings for eastecho project.
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-import os
 import pathlib
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor'
+    'ckeditor',
+    'sorl.thumbnail',
+    'django_instagram'
 ]
 
 MIDDLEWARE = [
@@ -91,15 +92,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/New_York'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_ROOT = str(BASE_DIR / 'site/static')
+MEDIA_ROOT = BASE_DIR / 'site/media'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = BASE_DIR / 'site/static'
 STATIC_URL = '/static/'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache',
+    }
+}
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
@@ -116,5 +126,54 @@ CKEDITOR_CONFIGS = {
             {'name': 'colors', 'items': ['TextColor',]}
         ],
         'toolbar': 'CustomConfig'
+    }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'eastecho': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'filters': ['require_debug_true']
+        },
+        'sorl.thumbnail': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'filters': ['require_debug_true']
+        }
     }
 }

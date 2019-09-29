@@ -2,8 +2,9 @@ import arrow
 from django import shortcuts
 from django.db import models as django_models
 from django.utils import timezone
+from django.views.decorators import cache
 
-from . import models
+from . import instagram, models
 
 
 def get_navbar_items():
@@ -13,11 +14,13 @@ def get_navbar_items():
     }
 
 
+@cache.cache_page(3600)
 def index(request):
     return shortcuts.render(
         request, 'index.html',
         {
-            'navbar': get_navbar_items()
+            'navbar': get_navbar_items(),
+            'instagram': instagram.get_photos('cbeast.orchestra')
         }
     )
 
