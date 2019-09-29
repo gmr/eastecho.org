@@ -1,10 +1,10 @@
 <div class="logo">
-  <a href="/"><img src="/static/logo.svg" alt="the east echo"></a>
+  <a href="/"><img src="/static/logo.png" alt="the east echo"></a>
 </div>
 <nav class="nav flex-column">
-  <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-  <a class="nav-link" href="/upcoming">This Week</a>
-  <a class="nav-link sub-nav-toggle" href="/clubs">Clubs &amp; Activities</a>
+  <a class="nav-link{% if request.resolver_match.url_name == 'index' %} active{% endif %}" href="/">Home <span class="sr-only">(current)</span></a>
+  <a class="nav-link{% if request.resolver_match.url_name == 'this-week' %} active{% endif %}" href="/this-week">This Week</a>
+  <a class="nav-link sub-nav-toggle{% if request.resolver_match.url_name == 'club' %} active{% endif %}" href="/clubs">Clubs &amp; Activities</a>
   {% regroup navbar.clubs by category as categories %}
   {% for sn_cat in categories  %}
     <nav class="nav sub-nav flex-column">
@@ -16,6 +16,6 @@
       </nav>
     </nav>
   {%  endfor %}
-  <a class="nav-link" href="/events">fundraisers &amp; events</a>
+  <a class="nav-link{% if request.resolver_match.url_name == 'events' %} active{% endif %}" href="/events">fundraisers &amp; events</a>
   <a class="nav-link" href="/spotlights">human interest</a>
 </nav>
