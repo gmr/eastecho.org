@@ -32,7 +32,25 @@
       </a>
     </dd>
   </dl>
-  <div>{% autoescape off %}{{  club.description }}{% endautoescape %}
+  {% if club.description %}
+  <div>
+    {% autoescape off %}{{  club.description }}{% endautoescape %}
   </div>
+  {% endif %}
+  <h4>Upcoming {{ club.name }} Events</h4>
+  {% if not events %}
+  <div class="alert alert-info" role="alert">
+    <i class="fas fa-info-circle"></i> We do not have any information about upcoming events
+  </div>
+  {% else %}
+    <ul class="list-unstyled">
+    {% for event in events %}
+      <li class="event">
+        <strong class="text-primary">{{ event.start_at|date:"N j, g:i a" }}{% if event.end_at %} &ndash; {{ event.end_at|date:"g:i a" }}{% endif %}</strong>{% if event.location %}, {{ event.location }}{% endif %}
+        {% if event.notes %}{% autoescape off %}{{ event.notes }}{% endautoescape %}{% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
 </div>
 {% endblock %}

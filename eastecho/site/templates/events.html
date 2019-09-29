@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}the east echo &ndash; Fundraisers &amp; Events{% endblock %}
+{% block content %}
+  <header class="events">
+    <h1>Upcoming Fundraisers &amp; Events</h1>
+  </header>
+  <div class="content">
+  <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-this-week" data-toggle="tab" href="#this-week" role="tab" aria-controls="this-week" aria-selected="true">This Week</a>
+    <a class="nav-item nav-link" id="nav-calendar" data-toggle="tab" href="#calendar" role="tab" aria-controls="calendar" aria-selected="false">Calendar</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="this-week" role="tabpanel" aria-labelledby="nav-this-week">
+  {% for event in events %}
+    {{ event.start_at }} - {{ event.club.name }} - {{  event.event_type }}
+  {% endfor %}
+    </div>
+  <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="nav-calendar">...</div>
+  </div>
+</div>
+{% endblock %}

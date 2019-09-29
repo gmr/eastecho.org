@@ -9,7 +9,9 @@ body {
 
         a {
           color: black;
-
+          &.active {
+            color: #1b6b84;
+          }
           &:hover {
             color: $gray;
           }
@@ -31,6 +33,9 @@ body {
 
           a {
             color: $gray-600;
+            .active {
+              color: #1b6b84;
+            }
 
             &:hover {
               color: $gray-500;

@@ -27,6 +27,15 @@ body {
         padding: 0;
         width: 100%;
 
+        header {
+          padding: 1.25em;
+          text-align: center;
+          &.events {
+            background: #0d4157;
+            color: #fff;
+          }
+        }
+
         .club-header {
           background-color: rgba(42, 169, 235, 0.58);
           background-image: url('/static/default.jpeg');
@@ -38,6 +47,7 @@ body {
           height: 275px;
           width: 100%;
         }
+
         .page-content {
           padding: .5em 1em;
           h1 {
@@ -46,7 +56,28 @@ body {
             padding-bottom: .25em;
           }
         }
+
+        .content {
+          margin-top: 1em;
+          .tab-content {
+            margin-top: 1em;
+            .tab-pane {
+              margin: 1em;
+              .alert {
+                margin: .5em 1.5em;
+              }
+              h4 {
+                margin: 1em 0;
+              }
+
+            }
+          }
+        }
+
       }
+    }
+    .event {
+      margin: 1em 1.5em;
     }
     z-index: 50;
   }
@@ -54,6 +85,7 @@ body {
   footer {
     align-content: center;
     color: #aaa;
+    background: #fff;
     border-top: 1px solid #ccc;
     flex: 0 0 auto;
     height: 2.5em;
