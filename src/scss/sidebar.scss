@@ -11,6 +11,7 @@ body {
           color: black;
           &.active {
             color: #1b6b84;
+            font-weight: bold;
           }
           &:hover {
             color: $gray;
@@ -35,6 +36,7 @@ body {
             color: $gray-600;
             .active {
               color: #1b6b84;
+              font-weight: bold;
             }
 
             &:hover {
