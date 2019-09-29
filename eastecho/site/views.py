@@ -39,8 +39,17 @@ def club(request, club_slug):
     )
 
 
-def events(request):
+def clubs(request):
+    return shortcuts.render(
+        request, 'clubs.html',
+        {
+            'navbar': get_navbar_items(),
+            'clubs': models.Club.objects.all()
+        }
+    )
 
+
+def events(request):
     return shortcuts.render(
         request, 'events.html',
         {

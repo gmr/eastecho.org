@@ -48,8 +48,14 @@ body {
           width: 100%;
         }
 
+        .clubs {
+          margin: 1em;
+          li {
+            margin: .25em 0;
+          }
+        }
         .page-content {
-          padding: .5em 1em;
+          padding: 1em;
           h1 {
             border-bottom: 1px solid #eee;
             margin-bottom: .5em;

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}the east echo &ndash; Clubs &amp; Activities{% endblock %}
+{% block content %}
+  <header class="events">
+    <h1>All Clubs &amp; Activities</h1>
+  </header>
+  <div class="page-content">
+    <p class="lead">The following is a list of all Clubs &amp; Activities that provide information to the East Echo:</p>
+    {% regroup navbar.clubs by category as categories %}
+    {% for sn_cat in categories  %}
+      <h4>{{ sn_cat.grouper }}</h4>
+      <ul class="list-unstyled clubs">
+        {% for sn_club in sn_cat.list  %}
+        <li><a href="/club/{{ sn_club.slug }}">{{ sn_club.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+{% endblock %}
