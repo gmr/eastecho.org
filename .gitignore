@@ -112,4 +112,5 @@ eastecho/site/static/site.css
 eastecho/site/static/*.js
 eastecho/site/static/admin/
 eastecho/site/static/fonts/
+eastecho/site/media/
 eastecho/site/migrations/0*.py
