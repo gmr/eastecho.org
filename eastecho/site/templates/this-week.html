@@ -9,7 +9,7 @@
     <nav>
       <div class="nav nav-pills" id="nav-tab" role="tablist">
         {% for event_type in event_types %}
-        <a class="nav-item nav-link{% if forloop.first %} active{% endif %}" id="nav-{{ event_type.name|slugify }}" data-toggle="tab" href="#{{ event_type.name|slugify }}" role="tab" aria-controls="events" aria-selected="true">{{ event_type.name }}s</a>
+        <a class="nav-item nav-link{% if forloop.first %} active{% endif %}" id="nav-{{ event_type.name|slugify }}" data-toggle="tab" href="#{{ event_type.name|slugify }}" role="tab" aria-controls="events" aria-selected="true">{{ event_type.name }}{% if event_type|make_list|slice:"-1:"|join:"" != 's' %}s{% endif %}</a>
         {% endfor %}
       </div>
     </nav>
