@@ -11,6 +11,10 @@ body {
     margin-bottom: 5em !important;
     min-height: 100vh;
 
+    @media (max-width: 768px) {
+      padding-top: 66px;
+    }
+
     div.main {
       align-items: stretch;
       display: flex;
@@ -61,16 +65,40 @@ body {
             margin-bottom: .5em;
             padding-bottom: .25em;
           }
+        }
+
+        .instagram-content {
+
+          margin-top: 1em;
 
           .instagram {
             border: 1px solid #eee;
             padding: .25em;
             margin: .5em;
-            float: left;
+            display: inline-flex;
+            width: auto;
             > .photo {
               margin: .5em;
-              height: 320px;
-              width: 320px;
+
+              @media (max-width: 767.98px) {
+                width: 40vw;
+                height: 40vw;
+              }
+
+              @media (min-width: 767.99px) and (max-width: 991.98px) {
+                width: 28vw;
+                height: 28vw;
+                max-height: 320px;
+                max-width: 320px;
+              }
+
+              @media (min-width: 991.99px) {
+                width: 20vw;
+                height: 20vw;
+                max-height: 320px;
+                max-width: 320px;
+              }
+
               overflow: hidden;
               background-position: center;
               background-size: cover;
