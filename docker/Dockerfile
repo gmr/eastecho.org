@@ -16,7 +16,8 @@ RUN pip install uwsgi \
 RUN mkdir /opt/eastecho/media \
  && chown -R nginx /opt/eastecho \
  && chown -R nginx /usr/local/lib/python3.7/site-packages/eastecho/site/migrations \
- && cp -R /usr/local/lib/python3.7/site-packages/django/contrib/admin/static/admin /opt/eastecho/static/admin
+ && cp -R /usr/local/lib/python3.7/site-packages/django/contrib/admin/static/admin /opt/eastecho/static/admin \
+ && cp -R /usr/local/lib/python3.7/site-packages/ckeditor/static/ckeditor/* /opt/eastecho/static/ckeditor/
 
 EXPOSE 8000
 USER nginx
