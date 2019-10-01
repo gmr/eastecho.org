@@ -2,7 +2,7 @@ setup:
 	npm install
 
 build:
-	python setup.py sdist -d docker/dist
+	python3 setup.py sdist -d docker/dist
 	npm run build
 	npm run sass
 	cp -R eastecho/site/static docker/
