@@ -8,10 +8,11 @@ server {
   listen 80 default;
 
   location /.well-known/acme-challenge/ {
-      root /var/www/certbot;
+    root /var/www/certbot;
   }
-
-  return 301 https://$host$request_uri;
+  location / {
+    return 301 https://$host$request_uri;
+  }
   access_log off;
 }
 
