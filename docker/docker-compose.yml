@@ -10,7 +10,6 @@ services:
   eastecho:
     restart: always
     image: eastecho:latest
-    command: uwsgi --ini /etc/uwsgi.ini --static-map /static=/opt/eastecho/static
     volumes:
       - /opt/eastecho/media:/opt/eastecho/media
     depends_on:
