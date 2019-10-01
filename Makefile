@@ -5,6 +5,8 @@ build:
 	python3 setup.py sdist -d docker/dist
 	npm run build
 	npm run sass
+	rm -rf docker/static
+	rm -rf docker/templates
 	cp -R eastecho/site/static docker/
 	cp -R eastecho/site/templates docker/
 	docker build -t eastecho:latest docker
