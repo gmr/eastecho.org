@@ -1,15 +1,15 @@
 <nav class="navbar d-xs-block d-md-none fixed-top navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="/static/logo.svg" alt="the east echo" style="height: 2em;"></a>
+  <a class="navbar-brand" href="#"><img src="/static/logo.png" alt="the east echo" style="height: 2em;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-nav" aria-controls="top-nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="top-nav">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">This Week</a>
-      <a class="nav-item nav-link" href="#">Clubs &amp; Activities</a>
-      <a class="nav-item nav-link" href="#">Fundraisers &amp; Events</a>
-      <a class="nav-item nav-link" href="#">Human Interest</a>
+      <a class="nav-item nav-link{% if request.resolver_match.url_name == 'index' %} active{% endif %}" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link{% if request.resolver_match.url_name == 'this-week' %} active{% endif %}" href="/this-week">This Week</a>
+      <a class="nav-item nav-link{% if request.resolver_match.url_name == 'clubs' %} active{% endif %}" href="/clubs">Clubs &amp; Activities</a>
+      <a class="nav-item nav-link{% if request.resolver_match.url_name == 'events' %} active{% endif %}" href="/events">Fundraisers &amp; Events</a>
+      <!-- a class="nav-item nav-link" href="#">Human Interest</a -->
     </div>
   </div>
 </nav>
