@@ -64,7 +64,7 @@ def this_week(request):
     event_types = models.EventType.objects.all()
 
     start_at = today.shift(
-        days=(today.weekday() - today.weekday())).replace(
+        days=-today.weekday()).replace(
             hour=0, minute=0, second=0)
 
     values = {
@@ -75,9 +75,6 @@ def this_week(request):
         'event_types': event_types,
         'events': {}
     }
-    values['start_desc'] = values['start_at'].strftime('%B %d')
-    values['end_desc'] = values['end_at'].strftime('%B %d')
-
     for event_type in event_types:
         values['events'][event_type.name] = models.Event.objects.filter(
             django_models.Q(
