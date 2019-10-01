@@ -50,7 +50,7 @@ services:
     expose:
       - 5432
     volumes:
-      - /opt/eastecho/postgresql:/var/lib/postgresql
+      - /opt/eastecho/postgresql:/var/lib/postgresql/data
 
 volumes:
   eastecho:
