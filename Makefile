@@ -13,4 +13,9 @@ build:
 init:
 	@ cd docker && docker-compose up -d memcached postgres
 	@ cd docker && docker-compose run --rm migrate
-	@ cd docker && docker-compose up -d eastecho
+	@ cd docker && ./init-letsencrypt.sh
+
+start:
+	@ cd docker && docker-compose up -d memcached postgres
+	@ cd docker && docker-compose up -d eastecho nginx
+	@ cd docker && docker-compose up -d certbot
