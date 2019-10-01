@@ -114,3 +114,7 @@ eastecho/site/static/admin/
 eastecho/site/static/fonts/
 eastecho/site/media/
 eastecho/site/migrations/0*.py
+
+eastecho/docker/build
+eastecho/docker/static/
+eastecho/docker/templates/

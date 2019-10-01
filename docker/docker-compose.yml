@@ -1,0 +1,61 @@
+---
+version: '3.7'
+services:
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+  eastecho:
+    restart: always
+    image: eastecho:latest
+    command: uwsgi --ini /etc/uwsgi.ini
+    volumes:
+      - eastecho:/opt/eastecho
+    depends_on:
+      - memcached
+      - postgres
+    expose:
+      - 8000
+    links:
+      - memcached
+      - postgres
+  memcached:
+    image: memcached
+    restart: always
+    expose:
+      - 11211
+  migrate:
+    restart: "no"
+    image: eastecho:latest
+    command: /usr/local/bin/migrate.sh
+    links:
+      - postgres
+  nginx:
+    image: eastecho-nginx:latest
+    restart: always
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx'"
+    links:
+      - eastecho
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+      - eastecho:/opt/eastecho
+  postgres:
+    image: postgres:11
+    expose:
+      - 5432
+    volumes:
+      - type: bind
+        source: /var/lib/postgresql
+        target: /var/lib/postgresql
+        consistency: consistent
+
+volumes:
+  certbot_conf:
+  certbot_www:
+  eastecho:

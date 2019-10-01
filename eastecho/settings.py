@@ -1,21 +1,23 @@
 """
 Django settings for eastecho project.
 
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+import os
 import pathlib
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = pathlib.Path(__file__).parent
+DEBUG = os.environ.get('DEV', 'TRUE') == 'TRUE'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'secret_key'
+BASE_DIR = pathlib.Path(__file__).parent if DEBUG else pathlib.Path('/opt/eastecho')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  [
+    'eastecho.org',
+    'www.eastecho.org',
+    'localhost',
+    '127.0.0.1',
+    '[::1]'
+]
 
 INSTALLED_APPS = [
     'eastecho.site.apps.SiteConfig',
@@ -46,7 +48,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            str(BASE_DIR / 'site/templates')
+            str(BASE_DIR / 'site/templates') if DEBUG else str(BASE_DIR / 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -62,17 +64,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eastecho.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR.parent / 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': str(BASE_DIR.parent / 'db.sqlite3'),
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'postgres',
+            'PORT': 5432,
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -98,18 +109,27 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-MEDIA_ROOT = BASE_DIR / 'site/media'
+MEDIA_ROOT = BASE_DIR / 'site/media' if DEBUG else  BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = BASE_DIR / 'site/static'
+STATIC_ROOT = BASE_DIR / 'site/static' if DEBUG else BASE_DIR / 'static'
 STATIC_URL = '/static/'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache',
+if DEBUG:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+            'LOCATION': '/var/tmp/django_cache',
+        }
     }
-}
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': 'memcached:11211',
+        }
+    }
+
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
@@ -143,14 +163,10 @@ LOGGING = {
         },
     },
     'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
     },
     'handlers': {
         'console': {
             'level': 'INFO',
-            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
@@ -167,13 +183,11 @@ LOGGING = {
         },
         'eastecho': {
             'handlers': ['console'],
-            'level': 'INFO',
-            'filters': ['require_debug_true']
-        },
-        'sorl.thumbnail': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'filters': ['require_debug_true']
+            'level': 'INFO'
         }
     }
 }
+
+if DEBUG:
+    USE_X_FORWARDED_HOST = True
+    USE_X_FORWARDED_PORT= True

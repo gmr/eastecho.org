@@ -1,0 +1,36 @@
+upstream uwsgi {
+  server eastecho:8000;
+}
+
+server {
+  server_name _;
+
+  listen 80 default;
+
+  location /media {
+    root /opt/eastecho;
+  }
+
+  location /static {
+    root /opt/eastecho;
+  }
+
+  location / {
+    uwsgi_pass  uwsgi;
+    add_header 'Access-Control-Allow-Origin' '*';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+    add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+    add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+    include     /etc/nginx/uwsgi_params;
+  }
+
+  location /.well-known/acme-challenge/ {
+      root /var/www/certbot;
+  }
+
+  location /nginx_status {
+    stub_status on;
+  }
+
+  access_log off;
+}
