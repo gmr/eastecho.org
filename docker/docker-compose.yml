@@ -12,8 +12,8 @@ services:
     image: eastecho:latest
     command: uwsgi --ini /etc/uwsgi.ini
     volumes:
-      - eastecho:/opt/eastecho
       - /opt/eastecho/media:/opt/eastecho/media
+      - /opt/eastecho/static:/opt/eastecho/static
     depends_on:
       - memcached
       - postgres
@@ -45,7 +45,6 @@ services:
     volumes:
       - /opt/eastecho/certbot/conf:/etc/letsencrypt
       - /opt/eastecho/certbot/www:/var/www/certbot
-      - eastecho:/opt/eastecho
       - /opt/eastecho/media:/opt/eastecho/media
   postgres:
     image: postgres:11
@@ -54,5 +53,3 @@ services:
     volumes:
       - /opt/eastecho/postgresql:/var/lib/postgresql/data
 
-volumes:
-  eastecho:

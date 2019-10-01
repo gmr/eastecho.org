@@ -16,7 +16,6 @@ server {
   access_log off;
 }
 
-
 server {
   listen                443 ssl;
   server_name           eastecho.org www.eastecho.org;
@@ -28,10 +27,6 @@ server {
   ssl_dhparam           /etc/letsencrypt/ssl-dhparams.pem;
 
   location /media {
-    root /opt/eastecho;
-  }
-
-  location /static {
     root /opt/eastecho;
   }
 
