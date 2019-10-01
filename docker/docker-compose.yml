@@ -10,10 +10,9 @@ services:
   eastecho:
     restart: always
     image: eastecho:latest
-    command: uwsgi --ini /etc/uwsgi.ini
+    command: uwsgi --ini /etc/uwsgi.ini --static-map /static=/opt/eastecho/static
     volumes:
       - /opt/eastecho/media:/opt/eastecho/media
-      - /opt/eastecho/static:/opt/eastecho/static
     depends_on:
       - memcached
       - postgres
