@@ -36,7 +36,8 @@ class Club(models.Model):
     treasurer = models.CharField(blank=True, null=True, max_length=200)
     secretary = models.CharField(blank=True, null=True, max_length=200)
     icon = models.CharField(max_length=30, default='fas fa-user-friends')
-    cover_photo = models.ImageField(blank=True, null=True, upload_to='uploads/%Y/%m/%d/')
+    cover_photo = models.ImageField(blank=True, null=True,
+                                    upload_to='uploads/%Y/%m/%d/')
     description = fields.RichTextField()
 
     class Meta:

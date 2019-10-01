@@ -7,28 +7,20 @@ import pathlib
 
 DEBUG = os.environ.get('DEV', 'TRUE') == 'TRUE'
 
-BASE_DIR = pathlib.Path(__file__).parent if DEBUG else pathlib.Path('/opt/eastecho')
+BASE_DIR = pathlib.Path(__file__).parent if DEBUG else pathlib.Path(
+    '/opt/eastecho')
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
-ALLOWED_HOSTS =  [
-    'eastecho.org',
-    'www.eastecho.org',
-    'localhost',
-    '127.0.0.1',
-    '[::1]'
+ALLOWED_HOSTS = [
+    'eastecho.org', 'www.eastecho.org', 'localhost', '127.0.0.1', '[::1]'
 ]
 
 INSTALLED_APPS = [
-    'eastecho.site.apps.SiteConfig',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'ckeditor',
-    'sorl.thumbnail',
+    'eastecho.site.apps.SiteConfig', 'django.contrib.admin',
+    'django.contrib.auth', 'django.contrib.contenttypes',
+    'django.contrib.sessions', 'django.contrib.messages',
+    'django.contrib.staticfiles', 'ckeditor', 'sorl.thumbnail',
     'django_instagram'
 ]
 
@@ -46,11 +38,14 @@ ROOT_URLCONF = 'eastecho.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND':
+        'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            str(BASE_DIR / 'site/templates') if DEBUG else str(BASE_DIR / 'templates')
+            str(BASE_DIR / 'site/templates') if DEBUG else str(BASE_DIR /
+                                                               'templates')
         ],
-        'APP_DIRS': True,
+        'APP_DIRS':
+        True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -90,16 +85,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -109,7 +108,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-MEDIA_ROOT = BASE_DIR / 'site/media' if DEBUG else  BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'site/media' if DEBUG else BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = BASE_DIR / 'site/static' if DEBUG else BASE_DIR / 'static'
@@ -130,22 +129,40 @@ else:
         }
     }
 
-
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar_CustomConfig': [
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert',
-             'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar']},
-            {'name': 'colors', 'items': ['TextColor',]}
-        ],
-        'toolbar': 'CustomConfig'
+        'toolbar_CustomConfig': [{
+            'name':
+            'basicstyles',
+            'items': [
+                'Bold', 'Italic', 'Underline', 'Strike', 'Subscript',
+                'Superscript', '-', 'RemoveFormat'
+            ]
+        }, {
+            'name':
+            'paragraph',
+            'items': [
+                'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+                'Blockquote', '-', 'JustifyLeft', 'JustifyCenter',
+                'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'
+            ]
+        }, {
+            'name': 'links',
+            'items': ['Link', 'Unlink', 'Anchor']
+        }, {
+            'name':
+            'insert',
+            'items':
+            ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar']
+        }, {
+            'name': 'colors',
+            'items': [
+                'TextColor',
+            ]
+        }],
+        'toolbar':
+        'CustomConfig'
     }
 }
 
@@ -154,7 +171,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'format':
+            '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
             'style': '{',
         },
         'simple': {
@@ -162,8 +180,7 @@ LOGGING = {
             'style': '{',
         },
     },
-    'filters': {
-    },
+    'filters': {},
     'handlers': {
         'console': {
             'level': 'INFO',
@@ -188,6 +205,6 @@ LOGGING = {
     }
 }
 
-if DEBUG:
+if not DEBUG:
     USE_X_FORWARDED_HOST = True
-    USE_X_FORWARDED_PORT= True
+    USE_X_FORWARDED_PORT = True

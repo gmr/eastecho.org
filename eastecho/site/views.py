@@ -63,7 +63,9 @@ def this_week(request):
     today = arrow.get(timezone.now())
     event_types = models.EventType.objects.all()
 
-    start_at = today.shift(days=(today.weekday() - today.weekday())).replace(hour=0, minute=0, second=0)
+    start_at = today.shift(
+        days=(today.weekday() - today.weekday())).replace(
+            hour=0, minute=0, second=0)
 
     values = {
         'navbar': get_navbar_items(),

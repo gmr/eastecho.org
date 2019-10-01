@@ -9,4 +9,3 @@ urlpatterns = [
     path('events', views.events, name='events'),
     path('this-week', views.this_week, name='this-week'),
 ]
-

@@ -29,11 +29,11 @@ def get_photos(username):
 
 def _get_photo_list(username):
     profile = scraper.instagram_profile_obj(username)
-    edges = profile['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['edges']
+    user = profile['entry_data']['ProfilePage'][0]['graphql']['user']
     return [(e['node']['shortcode'],
              'https://www.instagram.com/p/{}/media/'.format(
                  e['node']['shortcode']))
-             for e in edges]
+            for e in user['edge_owner_to_timeline_media']['edges']]
 
 
 def get_ig_url(short_code: str) -> str:
