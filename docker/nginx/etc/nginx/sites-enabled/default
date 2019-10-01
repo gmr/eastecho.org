@@ -27,11 +27,11 @@ server {
   ssl_dhparam           /etc/letsencrypt/ssl-dhparams.pem;
 
   location /media {
-    alias /django/media;
+    root /opt/eastecho;
   }
 
   location /static {
-    alias /django/static;
+    root /opt/eastecho;
   }
 
   location / {
