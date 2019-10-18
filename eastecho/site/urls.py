@@ -8,4 +8,5 @@ urlpatterns = [
     path('clubs', views.clubs, name='clubs'),
     path('events', views.events, name='events'),
     path('this-week', views.this_week, name='this-week'),
+    path('auth', views.auth, name='auth')
 ]

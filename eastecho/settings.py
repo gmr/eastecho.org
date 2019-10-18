@@ -32,6 +32,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'eastecho.site.middleware.AuthCookieMiddleware'
 ]
 
 ROOT_URLCONF = 'eastecho.urls'

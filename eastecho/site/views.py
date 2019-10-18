@@ -1,5 +1,5 @@
 import arrow
-from django import shortcuts
+from django import http, shortcuts
 from django.db import models as django_models
 from django.utils import timezone
 from django.views.decorators import cache
@@ -87,3 +87,15 @@ def this_week(request):
                 end_at=None))
 
     return shortcuts.render(request, 'this-week.html', values)
+
+
+def auth(request):
+    args = {'err': False}
+    if request.method == 'POST':
+        data = request.POST.copy()
+        if data['password'] == 'password':
+            response = http.HttpResponseRedirect('/')
+            response.set_cookie('auth', data['password'])
+            return response
+        args['err'] = True
+    return shortcuts.render(request, 'auth.html', args)

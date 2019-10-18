@@ -1,0 +1,32 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'site.css' %}?2">
+    <title>{% block title %}the east echo{% endblock %}</title>
+  </head>
+  <body style="background-color: #eee; height: 100vh;">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="offset-4 col-4 align-content-center text-center rounded-lg mt-n5 p-2" style="background-color: #fff; border: 1px solid #ccc;">
+          <img src="/static/logo.png" alt="the east echo" class="mt-4 mb-2">
+          <div class="mt-2 mb-4">
+            <form class="d-inline-flex" method="post" action="/auth">
+              {% csrf_token %}
+              <div class="form-inline">
+                <div class="form-group text-center mr-2">
+                  <label for="password" class="sr-only">Password</label>
+                  <input type="password" name="password" class="form-control{% if err %} is-invalid{% endif %}" id="password" autofocus placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign-in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'site.js' %}?1"></script>
+  </body>
+</html>
