@@ -10,22 +10,22 @@
     <dt class="col-sm-2">Room</dt>
     <dd class="col-sm-10">{{ club.advisor.room }}</dd>
     {% if club.president %}
-    <dt class="col-sm-2">President</dt>
+    <dt class="col-sm-2">Officer{% if club.vice_president or club.treasurer or  club.secretary %}s{% endif %}</dt>
     <dd class="col-sm-10">{{ club.president }}</dd>
     {% endif %}
     {% if club.vice_president %}
-    <dt class="col-sm-2">Vice-President</dt>
+    <dt class="col-sm-2"></dt>
     <dd class="col-sm-10">{{ club.vice_president }}</dd>
     {% endif %}
     {% if club.treasurer %}
-    <dt class="col-sm-2">Treasurer</dt>
+    <dt class="col-sm-2"></dt>
     <dd class="col-sm-10">{{ club.treasurer }}</dd>
     {% endif %}
     {% if club.secretary %}
-    <dt class="col-sm-2">Secretary</dt>
+    <dt class="col-sm-2"></dt>
     <dd class="col-sm-10">{{ club.secretary }}</dd>
     {% endif %}
-    <dt class="col-sm-2">Contact</dt>
+    <dt class="col-sm-2"></dt>
     <dd class="col-sm-10">
       <a href="mailto:{% if club.contact_email %}{{ club.contact_email }}{% else %}{{club.advisor.email }}{% endif %}">
       {% if club.contact_email %}{{ club.contact_email }}{% else %}{{club.advisor.email }}{% endif %}

@@ -20,7 +20,7 @@ def index(request):
         request, 'index.html',
         {
             'navbar': get_navbar_items(),
-            'instagram': instagram.get_photos('cbeast.orchestra')
+            'instagram': instagram.get_photos('east.echo')
         }
     )
 
