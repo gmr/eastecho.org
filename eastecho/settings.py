@@ -12,6 +12,8 @@ BASE_DIR = pathlib.Path(__file__).parent if DEBUG else pathlib.Path(
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
+SITE_PASSWORD = 'patriot'
+
 ALLOWED_HOSTS = [
     'eastecho.org', 'www.eastecho.org', 'localhost', '127.0.0.1', '[::1]'
 ]

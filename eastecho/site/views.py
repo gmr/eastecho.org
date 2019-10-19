@@ -1,5 +1,6 @@
 import arrow
 from django import http, shortcuts
+from django.conf import settings
 from django.db import models as django_models
 from django.utils import timezone
 from django.views.decorators import cache
@@ -93,7 +94,7 @@ def auth(request):
     args = {'err': False}
     if request.method == 'POST':
         data = request.POST.copy()
-        if data['password'] == 'password':
+        if data['password'] == settings.SITE_PASSWORD:
             response = http.HttpResponseRedirect('/')
             response.set_cookie('auth', data['password'])
             return response
